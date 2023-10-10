@@ -102,7 +102,18 @@ class AlienInvasion:
           """
         self._check_fleet_edges()
         self.aliens.update()
-         
+        make_new_aliens = False
+
+        for alien in self.aliens.copy():
+            if alien.check_bottom:
+                self.aliens.remove(alien)
+                make_new_aliens = True
+
+            if make_new_aliens:
+                self._create_row(0)
+
+
+
 
     def _create_fleet(self):
         """ Create the fleet of aliens """
@@ -111,7 +122,7 @@ class AlienInvasion:
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
         available_space_x = self.settings.screen_width - (2 * alien_width)
-        number_aliens_x = available_space_x // (2 * alien_width)
+        self.number_aliens_x = available_space_x // (2 * alien_width)
 
         # Determine the number of rows of aliens that fit on the screen.
         ship_height = self.ship.rect.height
@@ -121,9 +132,12 @@ class AlienInvasion:
 
         # Create the full fleet of aliens.
         for row_number in range(number_rows):
-            for alien_number in range(number_aliens_x):
-                self._create_alien(alien_number, row_number)
+            self._create_row(row_number)
 
+    def _create_row(self, row_number):
+        for alien_number in range(self.number_aliens_x):
+                self._create_alien(alien_number, row_number)
+        
     def _create_alien(self, alien_number, row_number):
             #  Create an alien and place it in the row
             alien = Alien(self)
