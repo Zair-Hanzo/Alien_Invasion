@@ -35,8 +35,7 @@ class Alien(Sprite):
             self.x += (self.settings.alien_speed *
                        self.settings.fleet_direction)
             self.rect.x = self.x
-            print(self.rect.x)
-            print(self.rect.y)
+
 
 
     def check_bottom(self):
