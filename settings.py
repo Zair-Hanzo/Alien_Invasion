@@ -10,10 +10,11 @@ class Settings:
         self.ship_speed = 1.5       # 2.61 sec for speed 1, 1.82 sec for speed 1.5, 1.31 sec for speed 2
         # Bullet settings
         self.bullet_speed = 3.0
-        self.bullet_width = 300
+        self.bullet_width = 10
         self.bullet_height = 5
         self.bullet_color = (60, 60, 60)
         self.bullets_allowed = 5
         self.alien_speed = 1.8
-        self.fleet_drop_speed = 8.0
+        self.fleet_drop_speed = 15
         self.fleet_direction = 1
+        self.ship_limit = 3
